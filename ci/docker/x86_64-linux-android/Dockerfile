@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:22.10
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -21,7 +21,7 @@ COPY android-sysimage.sh /android/
 RUN bash /android/android-sysimage.sh x86_64 x86_64-24_r07.zip
 
 ENV PATH=$PATH:/rust/bin:/android/ndk-$ANDROID_ARCH/bin \
-    CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER=x86_64-linux-android-gcc \
-    CC_x86_64_linux_android=x86_64-linux-android-gcc \
-    CXX_x86_64_linux_android=x86_64-linux-android-g++ \
+    CARGO_TARGET_X86_64_LINUX_ANDROID_LINKER=x86_64-linux-android21-clang \
+    CC_x86_64_linux_android=x86_64-linux-android21-clang \
+    CXX_x86_64_linux_android=x86_64-linux-android21-clang++ \
     HOME=/tmp
